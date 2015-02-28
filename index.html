@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Cards</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="container">
+    <div id="new-card"></div>
+    <div id="card-list"></div>
+    <div id="show-log"></div>
+  </div>
+
+  <script type="text/template" data-template="new-card">
+    <button class="create">+</button>
+    <input type="text" class="new-name" placeholder="New...">
+    <div class="colorpicker"></div>
+  </script>
+
+  <script type="text/template" data-template="cards">
+    
+  </script>
+
+  <script type="text/template" data-template="card">
+    <div class="title-bar" style="background:<%= color %>">
+      <h3><%= title %></h3>
+    </div>
+    <div class="timer-container"></div>
+    <div class="button-bar">
+      <button class="toggle">GO</button><!--
+      --><button class="log">LOG</button>  
+    </div>
+  </script>
+
+  <script type="text/template" data-template="timer">
+    <!-- Clockview Setup -->
+    <%                
+      var second = time % 60,
+          minute = Math.floor(time/60) % 60,
+          hour = Math.floor(time/3600);
+    %>
+    <span class="timer"><%= (hour < 10) ? '0'+ hour : hour %>:<%= (minute < 10) ? '0' + minute : minute  %>:<%= (second < 10) ? '0' + second : second %></span>
+  </script>
+
+  <script type="text/template" data-template="show-log">
+    <button class="show-log">Show Log</button>
+  </script>
+  
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
